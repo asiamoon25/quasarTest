@@ -7,7 +7,7 @@ var db = require('./db');
 
 var indexRouter = require('./routes/index');
 var boardRouter = require('./routes/board');
- 
+  
 var app = express();
 
 
