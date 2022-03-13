@@ -1,15 +1,15 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="hhh lpr fff">
     <Header/>
     <q-page-container>
-      <router-view />
+        <router-view />
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
 import { defineComponent, ref } from 'vue'
-import Header from '../components/Header.vue'
+import Header from '../components/default/Header.vue'
 export default defineComponent({
   name: 'MainLayout',
   components:{

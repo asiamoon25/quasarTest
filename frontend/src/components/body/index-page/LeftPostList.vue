@@ -1,15 +1,19 @@
 <template>
-  <router-view />
+    <div class="col-7">
+        LeftPostList
+    </div>
 </template>
 <script>
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'App'
+  name: 'LeftPostList',
+  
+  setup(){
+      
+  }
 })
 </script>
 <style>
-body{
-  font-family: 'Fredoka', sans-serif;
-}
+
 </style>
