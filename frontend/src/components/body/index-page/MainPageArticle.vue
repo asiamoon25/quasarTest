@@ -1,6 +1,6 @@
 <template>
-<div>
-   <div id="bgi" class="absolute">
+<div class="row" id="img-wrapper">
+   <div id="img" class="absolute">
        <div class="absolute-center">
         <h2>YeonSang's Blog</h2>
        </div>
@@ -19,10 +19,17 @@ export default defineComponent({
 })
 </script>
 <style>
-#bgi{
-    background-image: url('~assets/다운로드.jpeg');
+#img-wrapper{
     width:100%;
-    height:50vh;
+    height:45vh;
+}
+#img{
+    background-image: url('~assets/keyboard.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width:100%;
+    height:45vh;
   
 }
 .absolute-center{
