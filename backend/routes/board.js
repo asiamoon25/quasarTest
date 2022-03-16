@@ -13,5 +13,14 @@ router.get('/',(req,res)=>{
     res.send('success!');
 })
 
+router.post('/list',(req,res)=>{
+    // Board.create(req.body).then(()=>{}).catch(err=>res.status(500).send(err));
+    Board.create(req.body)
+    .then(()=>{
+        res.status(200).send('S');
+    })
+    .catch(err => res.status(500).send(err));
+})
+
 
 module.exports = router;

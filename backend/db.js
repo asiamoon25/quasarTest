@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 module.exports = () => {
     function connect() {
-        mongoose.connect('mongodb://yeonsang:Dustkd4!@localhost:27017',function(err) { // .connect is db connection
+        mongoose.connect('mongodb://asianoo25:Dustkd4!@localhost:27017/blog',function(err) { // .connect is db connection
             if(err) {
                 console.log('mongodb connection error : ', err);
             }
