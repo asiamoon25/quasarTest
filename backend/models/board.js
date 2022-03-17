@@ -15,7 +15,7 @@ boardSchema.statics.create = function (payload) {
 
 //Find All
 boardSchema.statics.findAll = function () {
-    return this.find({});
+    return this.find({},{_id:0,__v:0});
 }
 
 module.exports = mongoose.model('Board',boardSchema);

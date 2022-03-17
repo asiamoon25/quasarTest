@@ -3,21 +3,21 @@ const Board = require('../models/board');
 
 
 router.get('/',(req,res)=>{
-    Board.find()
-        .then(()=>{
-            // if(!boards.length) return res.status(404).send({err:'Board Not Found'});
-            // res.send(`find successfully: ${boards}`);
-
-        })
-        .catch(err => res.status(500).send(err));
-    res.send('success!');
+       Board.findAll()
+            .then(boards =>{
+                if(!boards.length) return res.status(500).send('데이터 없음)')
+                return res.status(200).json({board:boards})
+            })
+            .catch(err =>
+                res.status(500).send(err)
+            );
 })
 
-router.post('/list',(req,res)=>{
+router.get('/list',(req,res)=>{
     // Board.create(req.body).then(()=>{}).catch(err=>res.status(500).send(err));
-    Board.create(req.body)
+    Board.create(req.query)
     .then(()=>{
-        res.status(200).send('S');
+        res.status(200).send(req.query);
     })
     .catch(err => res.status(500).send(err));
 })

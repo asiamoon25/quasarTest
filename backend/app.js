@@ -3,11 +3,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var history = require('connect-history-api-fallback');
 var db = require('./db');
 
 var indexRouter = require('./routes/index');
 var boardRouter = require('./routes/board');
-  
+
 var app = express();
 
 
@@ -20,8 +21,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(history());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', indexRouter);
 app.use('/board',boardRouter);
 // catch 404 and forward to error handler

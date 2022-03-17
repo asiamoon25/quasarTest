@@ -5,9 +5,9 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "dev": "nodemon ./bin/www"
-    
   },
   "dependencies": {
+    "connect-history-api-fallback": "^1.6.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
