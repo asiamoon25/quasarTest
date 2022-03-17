@@ -5,7 +5,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var history = require('connect-history-api-fallback');
 var db = require('./db');
-
 var indexRouter = require('./routes/index');
 var boardRouter = require('./routes/board');
 
