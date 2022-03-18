@@ -17,7 +17,7 @@ router.get('/list',(req,res)=>{
     // Board.create(req.body).then(()=>{}).catch(err=>res.status(500).send(err));
     Board.create(req.query)
     .then(()=>{
-        res.status(200).send(req.query);
+        return res.json({success:'success'});
     })
     .catch(err => res.status(500).send(err));
 })

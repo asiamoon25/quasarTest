@@ -4,8 +4,8 @@
     v-for="(bo,i) in board"
     :key="i"
   >
-    <h1>{{bo.title}}</h1>
-    <h1>{{bo.writer}}</h1>
+    <p>{{bo.title}} || {{bo.writer}}</p> 
+    
   </div>
 </div>
 
