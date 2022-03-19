@@ -69,7 +69,7 @@ module.exports = configure(function (ctx) {
       chainWebpack (/* chain */) {
         //
       },
-      distDir:'../backend/public/',
+      distDir:'../server/public/',
       htmlFilename:'index.html'
     },
 
@@ -81,10 +81,10 @@ module.exports = configure(function (ctx) {
       port: 8080,
       open: true, // opens browser window automatically
       proxy:{
-        '/':'http://localhost:3000',
+        '/api':'http://localhost:3000',
         changeOrigin: true,
         pathRewrite:{
-          '^/':''
+          '^/api':''
         }
       },
       historyApiFallback: true

@@ -132,6 +132,6 @@ public
 
 package-lock.json
 
-db.js
+db-config/db.js
 
 .env

@@ -19,7 +19,7 @@ export default defineComponent({
     board: []
   }),
   created() {
-       this.$axios.get('/board').then((res)=>{
+       this.$axios.get('/api/board').then((res)=>{
          this.board = res.data.board
         }).catch((err)=>{
           console.log(err)

@@ -8,9 +8,9 @@ const boardSchema = new mongoose.Schema({
 autoIdSetter(boardSchema,mongoose,'board','id');
 //Create Board
 boardSchema.statics.create = function (payload) {
-  const board = new this(payload);
+    const board = new this(payload);
 
-  return board.save();
+    return board.save();
 };
 
 //Find All
