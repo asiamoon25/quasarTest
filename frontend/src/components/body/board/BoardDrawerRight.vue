@@ -11,7 +11,15 @@
                  class="text-center"
                  clickable>
                     <q-item-section>
-                        카테고리
+                        최근 올린 게시글
+                    </q-item-section>
+                </q-item>
+                <q-item
+                 class="text-center"
+                 clickable
+                >
+                    <q-item-section>
+                        인기글
                     </q-item-section>
                 </q-item>
             </q-list>

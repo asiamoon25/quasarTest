@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-
+const cors = require('cors');
 const history = require('connect-history-api-fallback');
 const db = require('./db-config/db');
 
@@ -13,7 +13,6 @@ const boardRouter = require('./routes/board');
 const app = express();
 
 db();
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
