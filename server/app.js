@@ -2,16 +2,20 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const cors = require('cors');
+const cors = require('cors')
 const history = require('connect-history-api-fallback');
 const db = require('./db-config/db');
 
+//DB Router
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const boardRouter = require('./routes/board');
+const categoryRouter = require('./routes/category');
+
 
 const app = express();
 
+app.use(cors());
 db();
 app.use(logger('dev'));
 app.use(express.json());
@@ -24,10 +28,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Router Setting
 //root path
 app.use('/api', indexRouter);
-// /user path
+// /api/user path
 app.use('/api/users', usersRouter);
-// /board path
+// /api/board path
 app.use('/api/board',boardRouter);
+//  /api/category path
+app.use('/api/category',categoryRouter);
 
 
 

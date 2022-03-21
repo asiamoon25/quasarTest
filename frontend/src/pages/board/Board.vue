@@ -1,12 +1,14 @@
 <template>
   <div>
-      <div class="row">
+      <div 
+        class="row"
+        v-if="state.board"
+      >
         <h4>전체</h4>
       </div>
       <div
       class="row q-mt-sm justify-center"
-      v-if="board"
-      v-for="(bo,i) in board"
+      v-for="(bo,i) in state.board"
       :key="i"
       >
         <div class="col-9 q-ml-xl">
@@ -15,7 +17,7 @@
           flat
           bordered
           @mouseover.stop="mousePoint"
-          v-bind:style="cursorStyle"
+          v-bind:style="state.cursorStyle"
           @click="boardDetail"
         >
           <q-card-section horizontal>
@@ -37,41 +39,62 @@
         </q-card>
         </div>
       </div>
-    <Comment/>
-
+    <!-- <Comment/> -->
   </div>
 
 </template>
 <script>
-import { defineComponent } from 'vue'
-import Comment from '../../components/body/board/Comment';
-export default defineComponent({
+import { computed, onBeforeMount, reactive } from 'vue'
+import {board, useStore} from 'vuex'
+// import Comment from '../../components/body/board/Comment';
+import {useRoute, useRouter} from 'vue-router'
+export default{
   name: 'Board',
   components:{
-    Comment
+    // Comment
   },
-  data: ()=>({
-    board: [],
-    cursorStyle:{
-      cursor:'',
-    }
-  }),
-  created() {
-       this.$axios.get('/api/board').then((res)=>{
-         this.board = res.data.board
-        }).catch((err)=>{
-          console.log(err)
-        })
+  props: {
+    
   },
-  methods:{
-    mousePoint(){
-      this.cursorStyle.cursor = "pointer"
-    },
-    boardDetail(){
-      this.$router.push('/');
+   
+  setup(){
+    const state = reactive({
+      board: [],
+      cursorStyle:{
+      cursor: '',
     }
+    })
+    const route = useRoute()
+    const router = useRouter()
+    const store = useStore()
+    onBeforeMount(()=>{
+        const category = route.params.category
+        store.dispatch('board/boardAction',category);
+      
+    })
+    const mousePoint =  function mousePoint(){
+      state.cursorStyle.cursor = "pointer"
+    }
+    
+    const boardDetail = function boardDetail(){
+      router.push('/');
+    }
+
+    const boards = computed({
+      get () {
+        return store.getters('board/boardGetters')
+      }
+    })
+    return{
+      mousePoint,
+      boardDetail,
+      state,
+      boards
+      
+    }
+    }
+    
   }
-})
 </script>
 <style>
 .content{

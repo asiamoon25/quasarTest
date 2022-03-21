@@ -14,12 +14,15 @@ const routes = [
     children: [
       {
         path: '',
-        component: ()=> import('pages/board/Board.vue')
+        component: ()=> import('pages/board/Board.vue'),
+        
+      },
+      {
+        path: ':category',
+        component: () => import('pages/board/Board.vue')
       }
     ]
-
   },
-
   // Always leave this as last one,
   // but you can also remove it
   {
