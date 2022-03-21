@@ -2,13 +2,13 @@
   <div>
       <div 
         class="row"
-        v-if="state.board"
+        v-if="boards"
       >
         <h4>전체</h4>
       </div>
       <div
       class="row q-mt-sm justify-center"
-      v-for="(bo,i) in state.board"
+      v-for="(bo,i) in boards"
       :key="i"
       >
         <div class="col-9 q-ml-xl">
@@ -82,7 +82,7 @@ export default{
 
     const boards = computed({
       get () {
-        return store.getters('board/boardGetters')
+        return store.getters['board/boardGetter']
       }
     })
     return{
