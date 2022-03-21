@@ -12,7 +12,7 @@ categorySchema.statics.create = function (payload) {
 
 //Find All
 categorySchema.statics.findAll = function () {
-    return this.find({},{_id:0,__v:0});
+    return this.find({},{__v:0});
 }
 
 //Find And Delete One

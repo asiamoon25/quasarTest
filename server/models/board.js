@@ -7,7 +7,7 @@ const boardSchema = new mongoose.Schema({
     content : String,
     write_date: String,
     modify_date : String,
-    c_id: [{ type: Schema.Types.ObjectId, ref: category}],
+    c_id: String,
 });
 
 //Create Board
@@ -25,14 +25,16 @@ boardSchema.statics.findAll = function () {
 boardSchema.static.findAndDelete = function(payload) {
     const board = new this(payload);
 
-    return this.findOneAndDelete({
+    return board.findOneAndDelete({
         _id: payload
     })
 }
 
 // Category에 따른 Board List
 boardSchema.static.findByCategory = function(payload) {
-    return this.find({c_id : payload.c_id})
+
+    const board = new this(payload)
+    return board.find({c_id : payload})
 }
 
 module.exports = mongoose.model('Board',boardSchema);

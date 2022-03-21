@@ -29,7 +29,7 @@ router.get('/category',(req,res)=>{
             return res.status(200).json({board:boards})
         })
         .catch(err=>{
-            res.status(500).send(err)
+            return res.status(500).send(err)
         })
 })
 
