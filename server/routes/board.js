@@ -23,7 +23,7 @@ router.get('/create',(req,res)=>{
 })
 
 router.get('/category',(req,res)=>{
-    Board.findByCategory(req.query)
+    Board.find({c_name:req.query.category})
         .then(boards =>{
             if(!boards.length) return res.status(204).send('No Data')
             return res.status(200).json({board:boards})

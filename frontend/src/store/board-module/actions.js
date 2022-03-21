@@ -7,8 +7,6 @@ export const boardAction = (context,payload) => {
             if(category == null || category ==''|| category == 'undefined'){
                 axios.get('/api/board').then((res)=>{
                     context.commit('boardMutation',res.data.board)
-                    
-                    
                 }).catch((err)=>{
                     console.log(err)
                 })
@@ -19,7 +17,7 @@ export const boardAction = (context,payload) => {
                     console.log(err)
                 })
         }
-    
+
 }
 
 

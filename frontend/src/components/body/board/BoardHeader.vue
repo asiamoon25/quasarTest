@@ -6,10 +6,10 @@
           <q-route-tab
             v-for="(category,i) in categories"
             :key=i
-            class="text-dark" 
+            class="text-dark"
             :name=category._id
             :label=category.c_name
-            @click =listCategory(category._id)
+            @click =listCategory(category.c_name)
           />
         </q-tabs>
       </div>
@@ -26,7 +26,7 @@ export default{
      this.$axios.get('/api/category/find-category')
      .then(res=>{
        this.categories = res.data.categoryList
-      
+
      }).catch(err=> {
        console.log(err);
      })
@@ -34,7 +34,7 @@ export default{
    methods:{
      listCategory(payload){
       //  console.log(payload)
-      
+
        this.$router.push('/board/'+payload)
       // this.$axios.get('/api/board/create',{params:{title:'sadf',content:'asd',write_date:'adsfads',modify_date:'asdfad',c_id:'6237e31e727e6a9e69de5a17'}})
       // .then(res=>{

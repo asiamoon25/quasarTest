@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hhh lpr fff">
     <Header/>
-    <board-drawer-right/> 
+    <BoardDrawerRight/>
     <q-page-container>
        <BoardHeader/>
         <router-view />
@@ -12,8 +12,8 @@
 <script>
 import { defineComponent, ref } from 'vue'
 import Header from '../../components/default/Header.vue'
-import BoardHeader from '../../components/body/board/BoardHeader.vue'
 import BoardDrawerRight from '../../components/body/board/BoardDrawerRight.vue'
+import BoardHeader from '../../components/body/board/BoardHeader.vue'
 
 export default defineComponent({
   name: 'BoardLayout',
@@ -27,7 +27,7 @@ export default defineComponent({
 
     }
   }
-})    
+})
 </script>
 <style>
 
