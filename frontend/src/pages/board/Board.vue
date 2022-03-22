@@ -1,6 +1,6 @@
 <template>
   <div>
-      <div 
+      <div
         class="row"
         v-if="boards"
       >
@@ -54,9 +54,9 @@ export default{
     // Comment
   },
   props: {
-    
+
   },
-   
+
   setup(){
     const state = reactive({
       board: [],
@@ -70,17 +70,20 @@ export default{
     onBeforeMount(()=>{
         const category = route.params.category
         store.dispatch('board/boardAction',category);
-      
+
     })
     const mousePoint =  function mousePoint(){
       state.cursorStyle.cursor = "pointer"
     }
-    
+
     const boardDetail = function boardDetail(){
       router.push('/');
     }
 
     const boards = computed({
+      set(val) { // 이건 안씀
+        store.commit('board/boardMutation',val);
+      },
       get () {
         return store.getters['board/boardGetter']
       }
@@ -90,10 +93,10 @@ export default{
       boardDetail,
       state,
       boards
-      
+
     }
     }
-    
+
   }
 </script>
 <style>

@@ -3,7 +3,7 @@
         side="right"
         show-if-above
         :breakpoint="700"
-        elevated
+        bordered
     >
         <q-scroll-area class="fit">
             <q-list>
@@ -38,7 +38,7 @@ export default defineComponent({
 
     }
   }
-})    
+})
 </script>
 <style>
 

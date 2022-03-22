@@ -3,8 +3,8 @@
     <Header/>
     <BoardDrawerRight/>
     <q-page-container>
-       <BoardHeader/>
-        <router-view />
+      <BoardHeader/>
+      <router-view />
     </q-page-container>
   </q-layout>
 </template>

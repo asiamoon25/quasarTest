@@ -12,29 +12,12 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'MainPageArticle',
-  
+
   setup(){
-      
+
   }
 })
 </script>
 <style>
-#img-wrapper{
-    width:100%;
-    height:45vh;
-}
-#img{
-    background-image: url('~assets/keyboard.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    width:100%;
-    height:45vh;
-  
-}
-.absolute-center{
-    color:white;
-
-}
-
+@import url('../../../css/index-page/main-page-article.scss');
 </style>

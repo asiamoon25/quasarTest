@@ -1,5 +1,6 @@
 export default function () {
   return {
-    board : true
+    board : true,
+    categories: true
   }
 }

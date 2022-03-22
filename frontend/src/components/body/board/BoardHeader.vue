@@ -16,34 +16,38 @@
     </div>
 </template>
 <script>
-import {ref} from 'vue'
-
+import {computed, onBeforeMount, reactive, ref} from 'vue'
+import {useRouter,useRoute} from 'vue-router'
+import {useStore} from 'vuex'
 export default{
-   data: () => ({
-     categories:[]
-   }),
-   beforeCreate () {
-     this.$axios.get('/api/category/find-category')
-     .then(res=>{
-       this.categories = res.data.categoryList
 
-     }).catch(err=> {
-       console.log(err);
-     })
-   },
-   methods:{
-     listCategory(payload){
-      //  console.log(payload)
-
-       this.$router.push('/board/'+payload)
-      // this.$axios.get('/api/board/create',{params:{title:'sadf',content:'asd',write_date:'adsfads',modify_date:'asdfad',c_id:'6237e31e727e6a9e69de5a17'}})
-      // .then(res=>{
-      //   console.log(res.data)
-      // }).catch(err=>{
-      //   console.log(err)
-      // })
-     }
-   }
+  setup(){
+    const state = reactive(({
+      //data 대신
+    }))
+    const route = useRoute();
+    const router = useRouter();
+    const store = useStore();
+    onBeforeMount(()=>{
+      store.dispatch('board/categoryAction',);
+    });
+    const categories = computed({
+      set(val){
+        store.commit('board/categoryMutation',val);
+      },
+      get(){
+        return store.getters['board/categoryGetter'];
+      }
+    });
+    const listCategory = function(payload) {
+      router.push('/board/'+payload);
+    }
+    return{
+      state,
+      categories,
+      listCategory
+    }
+  }
 }
 </script>
 <style>

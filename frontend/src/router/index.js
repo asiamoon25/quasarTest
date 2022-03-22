@@ -1,7 +1,8 @@
 import { route } from 'quasar/wrappers'
 import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
 import routes from './routes'
-
+import board from "./board/board";
+import admin from "./admin/admin";
 /*
  * If not building with SSR mode, you can
  * directly export the Router instantiation;
@@ -18,7 +19,12 @@ export default route(function (/* { store, ssrContext } */) {
 
   const Router = createRouter({
     scrollBehavior: () => ({ left: 0, top: 0 }),
-    routes,
+    routes : [
+      ...routes,
+      ...board,
+      ...admin
+    ],
+
 
     // Leave this as is and make changes in quasar.conf.js instead!
     // quasar.conf.js -> build -> vueRouterMode
