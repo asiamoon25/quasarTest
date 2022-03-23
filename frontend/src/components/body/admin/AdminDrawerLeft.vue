@@ -65,11 +65,12 @@ export default {
       }
     })
     const selectedNode = function(val) {
-      axios.post('/api/admin/create',null,{params:{name: '글쓰기',depth: 1}})
+      //url,data,{headers:{"Content-Type" : "application/json"}}
+      axios.post('/api/admin/create',{name: '글쓰기',depth: 1},{headers:{"Content-Type" : "application/json"}})
       .then(res=>{
         console.log(res.data.AdminCategories);
       }).catch(err=>{
-        console.log(err);
+        console.log(err.response.data);
       })
     }
 

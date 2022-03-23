@@ -1,6 +1,4 @@
 const mongoose = require('mongoose')
-    ,Schema = mongoose.Schema
-const category = require('./category')
 
 const boardSchema = new mongoose.Schema({
     title : String,

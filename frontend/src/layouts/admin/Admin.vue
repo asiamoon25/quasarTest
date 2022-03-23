@@ -11,7 +11,7 @@
 <script>
 import { computed, onBeforeMount, reactive } from 'vue'
 import AdminHeader from '../../components/default/Header'
-import AdminDrawerRight from "components/body/admin/AdminDrawerRight";
+import AdminDrawerRight from "components/body/admin/AdminDrawerLeft";
 export default {
   name: "Admin",
   components:{

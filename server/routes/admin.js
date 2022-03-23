@@ -17,12 +17,12 @@ router.get('/',(req,res)=>{
 
 router.post('/create',(req,res)=>{
     // Board.create(req.body).then(()=>{}).catch(err=>res.status(500).send(err));
-    // AdminCategory.create(req.params)
-    //     .then(()=>{
-    //         return res.send('success');
-    //     })
-    //     .catch(err => res.status(500).send(err));
-    res.send()
+    AdminCategory.create(req.body)
+        .then(()=>{
+            return res.send('success');
+        })
+        .catch(err => res.status(500).send(err));
+    // console.log(req.body);
 })
 
 module.exports = router;
