@@ -11,6 +11,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const boardRouter = require('./routes/board');
 const categoryRouter = require('./routes/category');
+const adminRouter = require('./routes/admin');
 
 
 const app = express();
@@ -34,7 +35,8 @@ app.use('/api/users', usersRouter);
 app.use('/api/board',boardRouter);
 //  /api/category path
 app.use('/api/category',categoryRouter);
-
+// /api/admin
+app.use('/api/admin',adminRouter)
 
 
 

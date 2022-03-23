@@ -41,13 +41,14 @@
 import {computed, reactive} from "vue";
 import {useStore} from 'vuex';
 import {useRouter} from 'vue-router';
-
+import axios from 'axios';
 export default {
   name: "AdminDrawerRight",
   setup() {
 
 
     const store = useStore();
+    const router = useRouter();
     const state = reactive(({
       selected: ''
     }));
@@ -63,9 +64,13 @@ export default {
         return store.getters['admin/menuTreeDataGetter']
       }
     })
-    const router = useRouter();
     const selectedNode = function(val) {
-      console.log(val);
+      axios.post('/api/admin/create',null,{params:{name: '글쓰기',depth: 1}})
+      .then(res=>{
+        console.log(res.data.AdminCategories);
+      }).catch(err=>{
+        console.log(err);
+      })
     }
 
 
