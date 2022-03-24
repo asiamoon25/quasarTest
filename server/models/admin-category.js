@@ -1,26 +1,24 @@
-
-
 const mongoose = require('mongoose')
 
-const admin_categorySchema = new mongoose.Schema({
+const {Schema} = mongoose;
 
-    name: String,
-    depth: Number
+const admin_sub_categorySchema = new mongoose.Schema({
+    name : String,
+    router_path: String,
+    main_id: [{type: Schema.Types.ObjectId, ref:'AdminCategory'}]
 });
 
+const admin_sub_category = mongoose.model('AdminSubCategory',admin_sub_categorySchema);
 
-admin_categorySchema.static.findAll = function(){
-    return this.find({});
-}
+const admin_categorySchema = new mongoose.Schema({
+    name: String,
+    router_path: String,
+    children: admin_sub_categorySchema
+});
 
-admin_categorySchema.static.create = function (payload) {
-    const category = new this(payload);
-
-    return category.save();
-}
+const admin_category = mongoose.model('AdminCategory',admin_categorySchema);
 
 
-module.exports = mongoose.model('AdminCategory',admin_categorySchema);
-
+module.exports = admin_category
 
 

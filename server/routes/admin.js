@@ -1,14 +1,16 @@
+const admin_category =require('../controller/admin-category')
+
 const router = require('express').Router();
-const AdminCategory = require('../models/admin-category');
+
 
 
 
 
 router.get('/',(req,res)=>{
-    AdminCategory.find({})
-        .then(admin_categories => {
-            if(!admin_categories) return res.status(204).send('Admin Category Collection is empty');
-            return res.status(200).json({AdminCategories : admin_categories})
+    admin_category.findAll()
+        .then(adminCategories => {
+            if(!adminCategories) return res.status(204).send('Admin Category Collection is empty');
+            return res.status(200).json({AdminCategories : adminCategories})
         })
         .catch(err =>
             res.status(500).send(err)
@@ -17,12 +19,12 @@ router.get('/',(req,res)=>{
 
 router.post('/create',(req,res)=>{
     // Board.create(req.body).then(()=>{}).catch(err=>res.status(500).send(err));
-    AdminCategory.create(req.body)
+    admin_category.create(req.body.params)
         .then(()=>{
             return res.send('success');
         })
         .catch(err => res.status(500).send(err));
-    // console.log(req.body);
+    // console.log(req.body.params.name);
 })
 
 module.exports = router;

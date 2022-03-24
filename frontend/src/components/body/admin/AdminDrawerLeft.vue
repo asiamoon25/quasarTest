@@ -18,13 +18,26 @@
         </q-item>
       </q-list>
       <q-list>
-        <q-item
-          class="text-center"
-          >
-          <q-item-section>
+        <q-expansion-item
+          expand-separator
+          icon="mail"
+          label="Inbox"
+          caption="5 unread emails"
+          default-opened
+        >
 
-          </q-item-section>
-        </q-item>
+          <q-item
+            class="text-center"
+            clickable
+            @click="selectedNode"
+          >
+            <q-item-section>
+
+              <p>categories</p>
+
+            </q-item-section>
+          </q-item>
+        </q-expansion-item>
       </q-list>
     </q-scroll-area>
   </q-drawer>
@@ -46,9 +59,18 @@ export default {
       selected: ''
     }));
 
-    const selectedNode = function(val) {
-      //url,data,{headers:{"Content-Type" : "application/json"}}
-
+    const selectedNode = function() {
+      axios.post('/api/admin/create',{params:{name:'글 쓰기',router_path:'write'}})
+      .then(res=>{
+        console.log(res.data);
+      }).catch(err=>{
+        console.log(err);
+      })
+      // axios.get('/api/admin').then(res=>{
+      //   console.log(res.data);
+      // }).catch(err=>{
+      //   console.log(err);
+      // })
     }
 
 
