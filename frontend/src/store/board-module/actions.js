@@ -33,6 +33,7 @@ export const categoryAction = (context,payload) => {
 
 export default function() {
     return {
-        boardAction : true
+        boardAction : true,
+        categoryAction:true
     }
 }

@@ -1,26 +1,26 @@
 export default function () {
   return {
-    expanded: [ '콘텐츠' ],
+    expanded: [],
     categoryData: [
       {
-        label: '콘텐츠',
-        icon: 'content_copy',
-        key : 'content',
+        label: '',
+        icon: '',
+        key : '',
         children: [
           {
-            label: '글 쓰기',
-            icon: 'create',
-            key: 'write'
+            label: '',
+            icon: '',
+            key: ''
           },
           {
-            label: '글관리',
-            icon: 'article',
-            key: 'article-manage'
+            label: '',
+            icon: '',
+            key: ''
           },
           {
-            label: '카테고리 관리',
-            icon: 'category',
-            key: 'category-manage'
+            label: '',
+            icon: '',
+            key: ''
           },
 
         ]

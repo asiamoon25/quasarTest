@@ -1,10 +1,10 @@
-export const menuTreeExpandedGetter =  (state) =>{
+export const expandedMutation =  (state) =>{
     return state.expanded;
 }
-
-export const menuTreeDataGetter = (state) => {
+export const categoryDataMutation = (state) => {
   return state.categoryData;
 }
+
 
 
 

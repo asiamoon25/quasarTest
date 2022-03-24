@@ -22,14 +22,7 @@
           class="text-center"
           >
           <q-item-section>
-            <q-tree
-              class="text-subtitle2"
-              :nodes="categories"
-              node-key="label"
-              :expanded.sync="expanded"
-              @update:selected="selectedNode"
-              :selected.sync="state.selected"
-            />
+
           </q-item-section>
         </q-item>
       </q-list>
@@ -52,33 +45,15 @@ export default {
     const state = reactive(({
       selected: ''
     }));
-    const expanded = computed({
-      set(val) {},
-      get() {
-        return store.getters['admin/menuTreeExpandedGetter']
-      }
-    })
-    const categories = computed({
-      set(val) {},
-      get() {
-        return store.getters['admin/menuTreeDataGetter']
-      }
-    })
+
     const selectedNode = function(val) {
       //url,data,{headers:{"Content-Type" : "application/json"}}
-      axios.post('/api/admin/create',{name: '글쓰기',depth: 1},{headers:{"Content-Type" : "application/json"}})
-      .then(res=>{
-        console.log(res.data.AdminCategories);
-      }).catch(err=>{
-        console.log(err.response.data);
-      })
+
     }
 
 
     return {
       state,
-      categories,
-      expanded,
       selectedNode,
     }
   }

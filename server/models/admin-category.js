@@ -1,3 +1,5 @@
+
+
 const mongoose = require('mongoose')
 
 const admin_categorySchema = new mongoose.Schema({
@@ -5,7 +7,6 @@ const admin_categorySchema = new mongoose.Schema({
     name: String,
     depth: Number
 });
-
 
 
 admin_categorySchema.static.findAll = function(){

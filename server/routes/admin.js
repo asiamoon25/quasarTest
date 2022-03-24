@@ -5,10 +5,10 @@ const AdminCategory = require('../models/admin-category');
 
 
 router.get('/',(req,res)=>{
-    AdminCategory.findAll()
+    AdminCategory.find({})
         .then(admin_categories => {
-            if(!admin_categories) return res.send(204).send('Admin Category Collection is empty');
-            return res.send(200).json({AdminCategories : admin_categories})
+            if(!admin_categories) return res.status(204).send('Admin Category Collection is empty');
+            return res.status(200).json({AdminCategories : admin_categories})
         })
         .catch(err =>
             res.status(500).send(err)
