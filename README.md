@@ -11,7 +11,7 @@ npm install
 
 server 디렉토리에 .env 파일 생성 (위치 server/ )
 
-**.env
+**.env**
 ```
 DB_URL=mongodb://<mongodb 계정>:<pwd>@<host>:<port>/<collection name>
 ```
@@ -23,7 +23,7 @@ npm start
 ```
 
 
-## front를 실행하기 위해서는 Quasar가 설치가 되어있어야 한다.
+### front를 실행하기 위해서는 Quasar가 설치가 되어있어야 한다.
 
 ## front 실행 명령어
 ```
