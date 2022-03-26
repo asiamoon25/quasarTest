@@ -1,29 +1,48 @@
-const adminCategory = require('../models/admin-category');
-
+const AdminCategory = require('../models/admin-category');
 
 module.exports ={
+
     // function
-   async findAll () {
-        return await this.find({});
+   async getAdminCategory () {
+
+        try{
+            return await AdminCategory.find({});
+        }catch(err){
+            console.log(err)
+        }
     },
 
 // 만약을 대비해서 create 도 생성함
-    async create (params) {
+    async createCategory (params) {
         const name = params.name;
-        const router_path = params.router_path;
-
-        return  await adminCategory.create(params);
+        const router_path_param = params.router_path;
+        const dbModel = new AdminCategory({
+            main_name : name,
+            router_path : router_path_param,
+            children: undefined
+        });
+        dbModel.save()
+            .then(res=>{
+                console.log('저장 성공')
+            }).catch(err=>{
+                console.log(err)
+        });
 
         // return
         // return 1;
     },
 
-    async updateSubCategory (adminCategoryId,childName,childRoutePath){
-        const adminCategory = await this.findById(adminCategoryId);
-        adminCategory.children.name = childName;
-        adminCategory.children.router_path = childRoutePath;
+    async updateSubCategory (adminCategoryId,childName,childRouterPath){
+        try{
+            const admin_category = await AdminCategory.findById(adminCategoryId).exec();
 
-        return  adminCategory.save();
+            admin_category.children.sub_name(childName)
+            admin_category.children.sub_router_path(childRouterPath)
+
+            return admin_category.save();
+        }catch (e) {
+            console.log(e);
+        }
     }
 }
 
