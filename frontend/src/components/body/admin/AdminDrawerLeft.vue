@@ -60,23 +60,18 @@ export default {
     }));
 
     const selectedNode = function() {
-      // axios.post('/api/admin/create',{params:{name:'글 쓰기',router_path:'write'}})
-      // .then(res=>{
-      //   console.log(res.data);
-      // }).catch(err=>{
-      //   console.log(err);
-      // })
-      // axios.get('/api/admin').then(res=>{
-      //   console.log(res.data.AdminCategories);
-      // }).catch(err=>{
-      //   console.log(err);
-      // })
-      axios.post('/api/admin//sub-category-create',{params:{adminCategoryId:'623d7f70aadcea30095cddeb',childName:'글 수정',childRouterPath:'modify'}})
-      .then(res=>{
+      axios.post('/api/admin/sub-category-create',{params:{adminCategoryId : '623f1e329cf75dcfe2dcee6a',name:'글 수정',router_path:'modify'}})
+      .then(res => {
         console.log(res.data);
       }).catch(err=>{
         console.log(err);
       })
+      // axios.post('/api/admin/create',{params:{name:'글 쓰기',router_path:'write'}})
+      //   .then(res => {
+      //     console.log(res.data);
+      //   }).catch(err=>{
+      //   console.log(err);
+      // })
     }
 
 

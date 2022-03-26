@@ -2,46 +2,30 @@ const AdminCategory = require('../models/admin-category');
 
 module.exports ={
 
-    // function
-   async getAdminCategory () {
+    async createCategory (payload) {
 
-        try{
-            return await AdminCategory.find({});
-        }catch(err){
-            console.log(err)
-        }
-    },
-
-// 만약을 대비해서 create 도 생성함
-    async createCategory (params) {
-        const name = params.name;
-        const router_path_param = params.router_path;
-        const dbModel = new AdminCategory({
-            main_name : name,
-            router_path : router_path_param,
-            children: undefined
+        const category = new AdminCategory({
+            name : payload.name,
+            router_path: payload.router_path,
+            children : []
         });
-        dbModel.save()
-            .then(res=>{
-                console.log('저장 성공')
+        return await category.save();
+    },
+    async updateSubCategory(payload) {
+        const name = payload.name
+        const router_path = payload.router_path
+        const id = payload.adminCategoryId
+
+        const params = {name:name,router_path:router_path}
+        const category = await AdminCategory.findById({_id:id}).exec()
+        if(category){
+            category.children.push(params)
+            category.markModified('children')
+          return  category.save().then(result=>{
+                console.log('success')
             }).catch(err=>{
                 console.log(err)
-        });
-
-        // return
-        // return 1;
-    },
-
-    async updateSubCategory (adminCategoryId,childName,childRouterPath){
-        try{
-            const admin_category = await AdminCategory.findById(adminCategoryId).exec();
-
-            admin_category.children.sub_name(childName)
-            admin_category.children.sub_router_path(childRouterPath)
-
-            return admin_category.save();
-        }catch (e) {
-            console.log(e);
+            })
         }
     }
 }
