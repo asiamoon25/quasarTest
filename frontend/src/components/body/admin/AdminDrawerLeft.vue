@@ -17,24 +17,27 @@
           </q-item-section>
         </q-item>
       </q-list>
-      <q-list>
+      <q-list
+        v-for="(category,i) in categories"
+        :key="i"
+      >
         <q-expansion-item
           expand-separator
           icon="mail"
-          label="Inbox"
+          :label=category.name
           caption="5 unread emails"
           default-opened
         >
-
           <q-item
             class="text-center"
             clickable
-            @click="selectedNode"
+            v-for="(cate,index) in category.children"
+            :key="index"
+            @click="selectedNode(cate.router_path)"
           >
             <q-item-section>
-
-              <p>categories</p>
-
+              <p>{{ cate.name }}</p>
+              <p id="routerPath">{{ cate.router_path }}</p>
             </q-item-section>
           </q-item>
         </q-expansion-item>
@@ -44,7 +47,7 @@
 </template>
 
 <script>
-import {computed, reactive} from "vue";
+import {computed, onBeforeMount, reactive} from "vue";
 import {useStore} from 'vuex';
 import {useRouter} from 'vue-router';
 import axios from 'axios';
@@ -59,30 +62,48 @@ export default {
       selected: ''
     }));
 
-    const selectedNode = function() {
-      axios.post('/api/admin/sub-category-create',{params:{adminCategoryId : '623f1e329cf75dcfe2dcee6a',name:'글 수정',router_path:'modify'}})
-      .then(res => {
-        console.log(res.data);
-      }).catch(err=>{
-        console.log(err);
-      })
+    onBeforeMount(()=>{
+      // store.dispatch('admin/getCategoriesAction');
+    })
+
+    const categories = computed({
+      set(val) {
+        store.commit('admin/categoryMutation', val)
+      },
+      get() {
+        return store.getters['admin/categoryGetter']
+      }
+      }
+    )
+
+    const selectedNode = function(pathName) {
+      // axios.post('/api/admin/sub-category-create',{params:{adminCategoryId : '623c86b8c9d982f6e9d25524',name:'글 수정',router_path:'modify'}})
+      // .then(res => {
+      //   console.log(res.data);
+      // }).catch(err=>{
+      //   console.log(err);
+      // })
       // axios.post('/api/admin/create',{params:{name:'글 쓰기',router_path:'write'}})
       //   .then(res => {
       //     console.log(res.data);
       //   }).catch(err=>{
       //   console.log(err);
       // })
+      console.log(pathName)
     }
 
 
     return {
       state,
       selectedNode,
+      categories
     }
   }
 }
 </script>
 
 <style scoped>
-
+#routerPath{
+  display: none
+}
 </style>

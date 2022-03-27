@@ -1,9 +1,7 @@
-export const expandedMutation =  (state) =>{
-    return state.expanded;
+export const categoryGetter =  (state) =>{
+    return state.categories;
 }
-export const categoryDataMutation = (state) => {
-  return state.categoryData;
-}
+
 
 
 
