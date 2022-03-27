@@ -1,7 +1,13 @@
 const AdminCategory = require('../models/admin-category');
 
+
 module.exports ={
 
+    async getCategory () {
+
+        return AdminCategory.find({},{_id:0,__v:0}).sort({_id:1})
+
+    },
     async createCategory (payload) {
 
         const category = new AdminCategory({
@@ -11,7 +17,7 @@ module.exports ={
         });
         return await category.save();
     },
-    async updateSubCategory(payload) {
+    async createSubCategory(payload) {
         const name = payload.name
         const router_path = payload.router_path
         const id = payload.adminCategoryId

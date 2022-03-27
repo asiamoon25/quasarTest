@@ -1,12 +1,11 @@
 import axios from 'axios';
-import {useRoute, useRouter} from 'vue-router';
 
-export const adminMenuTreeAction = (context,payload) => {
+export const getCategoriesAction = (context) => {
   axios.get('/api/admin')
     .then(res=>{
-      context.commit('')
-    }).catch(err=>{
-    console.log(err.response.data);
+      context.commit('categoryMutation',res.data.categories)
+    }).catch(err=> {
+      console.log(err)
   })
 }
 
@@ -14,6 +13,6 @@ export const adminMenuTreeAction = (context,payload) => {
 
 export default function() {
     return {
-      adminMenuTreeAction : true
+      getCategoriesAction : true
     }
 }
