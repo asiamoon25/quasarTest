@@ -5,10 +5,7 @@ export default [
     name: 'Admin',
     component: () => import('layouts/admin/AdminLayout'),
     children: [
-      {
-        path:'',
-        component: () => import('layouts/admin/AdminLayout')
-      }
+
     ]
   }
 ]
