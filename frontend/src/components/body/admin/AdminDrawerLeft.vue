@@ -23,9 +23,8 @@
       >
         <q-expansion-item
           expand-separator
-          icon="mail"
+          icon="content_copy"
           :label=category.name
-          caption="5 unread emails"
           default-opened
         >
           <q-item
@@ -63,7 +62,7 @@ export default {
     }));
 
     onBeforeMount(()=>{
-      // store.dispatch('admin/getCategoriesAction');
+      store.dispatch('admin/getCategoriesAction');
     })
 
     const categories = computed({
