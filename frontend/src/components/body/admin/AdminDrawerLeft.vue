@@ -8,11 +8,14 @@
     <q-scroll-area class="fit">
       <q-list>
         <q-item
-          class="text-center"
+          class="text-center text-black"
+          clickable
+          link
+          to="/admin"
           >
           <q-item-section>
             <span class="material-icons">
-              settings 블로그 관리 페이지
+              settings 블로그 홈
             </span>
           </q-item-section>
         </q-item>
@@ -76,26 +79,19 @@ export default {
     )
 
     const selectedNode = function(pathName) {
-      // axios.post('/api/admin/sub-category-create',{params:{adminCategoryId : '623c86b8c9d982f6e9d25524',name:'글 수정',router_path:'modify'}})
-      // .then(res => {
-      //   console.log(res.data);
-      // }).catch(err=>{
-      //   console.log(err);
-      // })
-      // axios.post('/api/admin/create',{params:{name:'글 쓰기',router_path:'write'}})
-      //   .then(res => {
-      //     console.log(res.data);
-      //   }).catch(err=>{
-      //   console.log(err);
-      // })
-      console.log(pathName)
+      router.push('/admin/'+pathName)
+    }
+
+    const adminHome = function() {
+      router.push('/admin')
     }
 
 
     return {
       state,
       selectedNode,
-      categories
+      categories,
+      adminHome
     }
   }
 }

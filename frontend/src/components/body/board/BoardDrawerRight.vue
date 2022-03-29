@@ -9,7 +9,8 @@
             <q-list>
                 <q-item
                  class="text-center"
-                 clickable>
+                 clickable
+                 >
                     <q-item-section>
                         최근 올린 게시글
                     </q-item-section>
