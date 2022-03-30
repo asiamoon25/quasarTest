@@ -85,13 +85,16 @@ export default {
     const adminHome = function() {
       router.push('/admin')
     }
+    const addCategory = function() {
+    }
 
 
     return {
       state,
       selectedNode,
       categories,
-      adminHome
+      adminHome,
+      addCategory
     }
   }
 }

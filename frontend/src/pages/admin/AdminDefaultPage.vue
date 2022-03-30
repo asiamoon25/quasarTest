@@ -38,22 +38,93 @@
         flat
         bordered
       >
+        <q-select
+          v-model="state.model"
+          :options="state.option"
+          borderless
+        />
         <apexchart
-          type="line"
-          height="350"
-          :options="state.options"
-          :series="state.series"
+
+          :options="options._value"
+          :series="series._value"
         />
       </q-card>
   </div>
   <div class="row justify-center q-ma-md">
-    <q-card>
-      <!-- 인기글 들어가는 곳 -->
+    <q-card
+      class="col"
+      flat
+      bordered
+
+    >
+      <div>
+        <p>인기글</p>
+        <div class="row">
+          <q-card
+            :class="colsWidth"
+            flat
+            bordered
+            @mouseover.stop="mousePoint"
+            v-bind:style="state.cursorStyle"
+            @click="boardDetail"
+          >
+            <q-card-section horizontal>
+              <q-img
+                width="40vh"
+                height="20vh"
+                src="../../assets/다운로드.jpeg"/>
+              <q-card-section class="q-pt-xs">
+                <div class="text-overline">카테고리 들어갈 부분</div>
+
+                <div class="text-h5 q-mt-sm q-mb-xs">타이틀</div>
+
+                <div class="text-caption text-grey">
+                  본문 내용 100자 이내로 들어가는 부분
+                </div>
+              </q-card-section>
+            </q-card-section>
+            <q-separator />
+          </q-card>
+        </div>
+      </div>
     </q-card>
   </div>
   <div class="row justify-center q-ma-md">
-    <q-card>
-      <!-- 최근 글 들어가는 곳(옆으로) -->
+    <q-card
+      class="col"
+      flat
+      bordered
+    >
+      <div>
+        <p>최근 글</p>
+        <div class="row">
+          <q-card
+            :class="colsWidth"
+            flat
+            bordered
+            @mouseover.stop="mousePoint"
+            v-bind:style="state.cursorStyle"
+            @click="boardDetail"
+          >
+            <q-card-section horizontal>
+              <q-img
+                width="40vh"
+                height="20vh"
+                src="../../assets/다운로드.jpeg"/>
+              <q-card-section class="q-pt-xs">
+                <div class="text-overline">카테고리 들어갈 부분</div>
+
+                <div class="text-h5 q-mt-sm q-mb-xs">타이틀</div>
+
+                <div class="text-caption text-grey">
+                  본문 내용 100자 이내로 들어가는 부분
+                </div>
+              </q-card-section>
+            </q-card-section>
+            <q-separator />
+          </q-card>
+        </div>
+      </div>
     </q-card>
   </div>
 </div>
@@ -72,39 +143,79 @@
 -->
 </template>
 <script>
-import {computed, onBeforeMount, reactive} from "vue";
+import {computed, onBeforeMount, reactive, ref} from "vue";
 import {useRoute, useRouter} from 'vue-router';
+import { useQuasar }from 'quasar';
+import {useStore} from "vuex";
 
 export default {
   name : 'AdminDefaultPage',
 
   setup() {
-
+    const $q = useQuasar()
+    const store = useStore()
     const router = useRouter()
     const routes = useRoute()
     const state = reactive({
-      options: {
-        chart: {
-          id: 'vuechart-example'
-        },
-        xaxis: {
-          categories:[1991,1992,1993,1994,1995,1996,1997,1998]
-        }
+      cursorStyle:{
+        cursor: '',
       },
-      series:[{
-        name: 'series-1',
-        data:[30,40,45,50,49,60,70,91]
-      }]
+      model:ref('월간') ,
+      option:['월간','주간','일간'],
 
     })
     onBeforeMount(()=>{
-      const category = routes.params.category
-      if(category == null){
 
+      const category = routes.params.category
+
+      store.dispatch('chart/chartOptionAction','')
+      store.dispatch('chart/chartSeriesAction','')
+
+    })
+
+    const colsWidth = computed({
+      set() {
+
+      },
+      get() {
+        switch ($q.screen.name){
+          case "xs": return 'col-12'
+          case "sm": return 'col-12'
+          case "md": return 'col-6'
+          case "lg": return 'col-6'
+          case "xl": return 'col-6'
+
+        }
       }
     })
+    const options = computed({
+      set(val) {},
+      get(){
+        return store.getters['chart/chartOptionGetter']
+      }
+    })
+    const series = computed({
+      set(val){},
+      get() {
+        return store.getters['chart/chartSeriesGetter']
+      }
+    })
+    const boardDetail = function boardDetail(){
+      router.push('/');
+    }
+
+    const mousePoint =  function mousePoint(){
+      state.cursorStyle.cursor = "pointer"
+    }
+
+
     return {
-      state
+      state,
+      mousePoint,
+      boardDetail,
+      colsWidth,
+      options,
+      series
     }
   }
 }

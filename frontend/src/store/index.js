@@ -2,6 +2,7 @@ import { store } from 'quasar/wrappers'
 import { createStore } from 'vuex'
 import board from './board-module'
 import admin from './admin-module'
+import chart from './chart-module'
 // import example from './module-example'
 
 /*
@@ -17,7 +18,8 @@ export default store(function (/* { ssrContext } */) {
   const Store = createStore({
     modules: {
       board,
-      admin
+      admin,
+      chart
     },
 
     // enable strict mode (adds overhead!)

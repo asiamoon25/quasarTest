@@ -5,7 +5,7 @@ export const boardAction = (context,payload) => {
             const router = useRouter();
             const category = payload;
 
-            if(category == null || category ==''|| category == 'undefined'){
+            if(category == null || category ===''|| category === 'undefined'){
                 axios.get('/api/board').then((res)=>{
                     context.commit('boardMutation',res.data.board);
                 }).catch((err)=>{
