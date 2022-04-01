@@ -44,9 +44,10 @@
           borderless
         />
         <apexchart
-
-          :options="options._value"
-          :series="series._value"
+          type="line"
+          height="350"
+          :options="options"
+          :series="series"
         />
       </q-card>
   </div>
@@ -55,10 +56,9 @@
       class="col"
       flat
       bordered
-
     >
+      <h6 class="no-margin">popular articles</h6>
       <div>
-        <p>인기글</p>
         <div class="row">
           <q-card
             :class="colsWidth"
@@ -95,8 +95,8 @@
       flat
       bordered
     >
+      <h6 class="no-margin">latest article</h6>
       <div>
-        <p>최근 글</p>
         <div class="row">
           <q-card
             :class="colsWidth"

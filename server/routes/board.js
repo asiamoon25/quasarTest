@@ -22,7 +22,7 @@ router.get('/create',(req,res)=>{
         .catch(err => res.status(500).send(err));
 })
 
-router.get('/category',(req,res)=>{
+router.get('/category-manage',(req,res)=>{
     Board.find({c_name:req.query.category})
         .then(boards =>{
             if(!boards.length) return res.status(204).send('No Data')

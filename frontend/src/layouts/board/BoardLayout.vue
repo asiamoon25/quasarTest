@@ -12,8 +12,8 @@
 <script>
 import { defineComponent, ref } from 'vue'
 import Header from '../../components/default/Header.vue'
-import BoardDrawerRight from '../../components/body/board/BoardDrawerRight.vue'
-import BoardHeader from '../../components/body/board/BoardHeader.vue'
+import BoardDrawerRight from 'components/body/board/default/BoardDrawerRight.vue'
+import BoardHeader from 'components/body/board/default/BoardHeader.vue'
 
 export default defineComponent({
   name: 'BoardLayout',

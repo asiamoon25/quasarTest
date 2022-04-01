@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const Category = require('../models/category');
 
-// /api/category/
+// /api/category-manage/
 router.post('/',(req,res)=>{
     Category.create(req.body)
         .then(() =>{
@@ -12,8 +12,8 @@ router.post('/',(req,res)=>{
             res.status(500).send(err)
         );
 })
-// /api/cateogry/find-category
-router.get('/find-category',(req,res)=>{
+// /api/cateogry/find-category-manage
+router.get('/find-category-manage',(req,res)=>{
     Category.findAll()
         .then(categoryList =>{
             if(!categoryList){
@@ -23,8 +23,8 @@ router.get('/find-category',(req,res)=>{
         })
         .catch(err => res.status(500).send(err));
 })
-// /api/category/delete-category
-router.post('/delete-category',(req,res) => {
+// /api/category-manage/delete-category-manage
+router.post('/delete-category-manage',(req,res) => {
     Category.findOneAndDelete({
         c_name : req.params
         }).then(()=>{
@@ -33,8 +33,8 @@ router.post('/delete-category',(req,res) => {
             return res.status(500).send(err)
         })
 })
-// /api/category/modify-category   Update Category Name
-router.post('modify-category',(req,res)=>{
+// /api/category-manage/modify-category-manage   Update Category Name
+router.post('modify-category-manage',(req,res)=>{
     Category.findOneAndUpdate({
         c_name: req.params.categoryName,
         $set: {

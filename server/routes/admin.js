@@ -26,7 +26,7 @@ router.post('/create',(req,res)=>{
     // console.log(req.body.params.name);
 })
 
-router.post('/sub-category-create',(req,res)=>{
+router.post('/sub-category-manage-create',(req,res)=>{
 
     admin_category.createSubCategory(req.body.params)
         .then(()=>{

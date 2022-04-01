@@ -9,9 +9,8 @@
 </template>
 
 <script>
-import { computed, onBeforeMount, reactive } from 'vue'
 import AdminHeader from '../../components/default/Header'
-import AdminDrawerRight from "components/body/admin/AdminDrawerLeft";
+import AdminDrawerRight from "components/body/admin/default/AdminDrawerLeft";
 export default {
   name: "Admin",
   components:{

@@ -10,7 +10,7 @@ export default [
 
       },
       {
-        path: ':category',
+        path: ':category-manage',
         component: () => import('../../pages/board/Board.vue')
       }
     ]

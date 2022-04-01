@@ -33,8 +33,8 @@ app.use('/api', indexRouter);
 app.use('/api/users', usersRouter);
 // /api/board path
 app.use('/api/board',boardRouter);
-//  /api/category path
-app.use('/api/category',categoryRouter);
+//  /api/category-manage path
+app.use('/api/category-manage',categoryRouter);
 // /api/admin
 app.use('/api/admin',adminRouter)
 

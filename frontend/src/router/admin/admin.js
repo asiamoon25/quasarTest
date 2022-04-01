@@ -7,11 +7,11 @@ export default [
     children: [
        {
          path: '',
-         component: () => import('pages/admin/AdminDefaultPage')
+         component: () => import('pages/admin/AdminDefaultPage'),
        },
       {
-        path: ':category',
-        component: () => import('pages/admin/AdminDefaultPage')
+        path: 'content/:subCate',
+        component: () => import('pages/admin/content/Content'),
       }
     ]
   }

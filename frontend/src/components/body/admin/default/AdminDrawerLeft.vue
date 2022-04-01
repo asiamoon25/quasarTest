@@ -23,7 +23,7 @@
       <q-list
         v-for="(category,i) in categories"
         :key="i"
-        bordered
+
       >
         <q-expansion-item
           expand-separator
