@@ -23,6 +23,7 @@
       <q-list
         v-for="(category,i) in categories"
         :key="i"
+        bordered
       >
         <q-expansion-item
           expand-separator
@@ -35,7 +36,7 @@
             clickable
             v-for="(cate,index) in category.children"
             :key="index"
-            @click="selectedNode(cate.router_path)"
+            @click="selectedNode(category.router_path,cate.router_path)"
           >
             <q-item-section>
               <p>{{ cate.name }}</p>
@@ -78,8 +79,8 @@ export default {
       }
     )
 
-    const selectedNode = function(pathName) {
-      router.push('/admin/'+pathName)
+    const selectedNode = function(mainPathName,pathName) {
+      router.push('/admin/'+mainPathName+'/'+pathName)
     }
 
     const adminHome = function() {
