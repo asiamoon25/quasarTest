@@ -22,9 +22,9 @@ export const boardAction = (context,payload) => {
 }
 
 export const categoryAction = (context,payload) => {
-          axios.get('/api/category/find-category')
+          axios.get('/api/category/get-category')
             .then(res=>{
-              context.commit('categoryMutation',res.data.categoryList);
+              context.commit('categoryMutation',res.data.category);
             }).catch(err=>{
               console.log(err);
           });

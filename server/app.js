@@ -34,7 +34,7 @@ app.use('/api/users', usersRouter);
 // /api/board path
 app.use('/api/board',boardRouter);
 //  /api/category-manage path
-app.use('/api/category-manage',categoryRouter);
+app.use('/api/category',categoryRouter);
 // /api/admin
 app.use('/api/admin',adminRouter)
 

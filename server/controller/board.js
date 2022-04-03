@@ -1,36 +1,37 @@
 const mongoose = require('mongoose')
 
-const boardSchema = new mongoose.Schema({
-    title : String,
-    content : String,
-    write_date: String,
-    modify_date : String,
-    c_name: String
-});
+const Board = require('../models/board')
 
-//Create Board
-boardSchema.statics.create = function (payload) {
-    const board = new this(payload);
 
-    return board.save();
-};
+module.exports={
 
-//Find All
-boardSchema.statics.findAll = function () {
-    return this.find({},{_id:0,__v:0});
+    async createBoard(payload) {
+
+        const board = new Board({
+            title : payload.title,
+            content : payload.content,
+            write_date: payload.write_date,
+            modify_date : payload.modify_date,
+            c_name: payload.c_name
+        });
+
+        return await board.save();
+
+    },
+    async getBoard() {
+
+        return Board.find({});
+
+    },
+    async deleteBoard(){
+
+    },
+    async cateBoard(payload) {
+
+        return Board.findById(payload.categoryId);
+
+
+    }
+
 }
 
-boardSchema.static.findAndDelete = function(payload) {
-    const board = new this(payload);
-
-    return board.findOneAndDelete({
-        _id: payload
-    })
-}
-
-// Category에 따른 Board List
-boardSchema.static.categoryFind = function(payload) {
-    return this.find({c_name : payload})
-}
-
-module.exports = mongoose.model('Board',boardSchema);
