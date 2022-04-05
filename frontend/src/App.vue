@@ -1,15 +1,16 @@
 <template>
   <router-view />
 </template>
+
 <script>
-import { defineComponent } from 'vue';
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'App'
 })
 </script>
 <style>
-body{
+body {
   font-family: 'Fredoka', sans-serif;
 }
 </style>

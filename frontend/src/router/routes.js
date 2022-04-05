@@ -1,19 +1,18 @@
-import board from './board/board'
-import admin from './admin/admin'
+
 const routes = [
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('layouts/main-layout/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') },
-
+      { path: '', component: () => import('pages/main-page/IndexPage.vue') }
     ]
   },
+
   // Always leave this as last one,
   // but you can also remove it
   {
     path: '/:catchAll(.*)*',
-    component: () => import('pages/Error404.vue')
+    component: () => import('pages/ErrorNotFound.vue')
   }
 ]
 
