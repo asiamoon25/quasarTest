@@ -6,3 +6,7 @@ export const categoryGetter = (state) => {
   return state.categories;
 }
 
+export const countGetter = (state) => {
+  return state.countResult;
+}
+

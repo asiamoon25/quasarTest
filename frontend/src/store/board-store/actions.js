@@ -28,12 +28,24 @@ export const categoryAction = (context,payload) => {
             }).catch(err=>{
               console.log(err);
           });
+      }
+
+export const countAction = (context, payload) => {
+
+  axios.get('/api/board/count')
+    .then(res=> {
+        context.commit('countMutation',res.data.countResult);
+    }).catch(err=>{
+    console.log(err);
+  })
+
 }
 
 
 export default function() {
     return {
         boardAction : true,
-        categoryAction:true
+        categoryAction:true,
+        countAction: true
     }
 }

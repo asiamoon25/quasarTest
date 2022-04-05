@@ -30,7 +30,9 @@ module.exports={
 
         return Board.findById(payload.categoryId);
 
-
+    },
+    async countBoard () {
+        return Board.count();
     }
 
 }

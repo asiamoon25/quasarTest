@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Board2 = require('../models/board');
+
 const Board = require('../controller/board')
 
 
@@ -32,6 +32,18 @@ router.get('/get-category',(req,res)=>{
     }).catch(err=>{
         res.status(500).send(err)
     });
+})
+
+router.get('/count',(req,res) => {
+
+    Board.countBoard()
+        .then(result => {
+            if(!result) return res.status(204).send('no data')
+            return res.status(200).json({countResult : result})
+        }).catch(err=> {
+            res.status(500).send(err)
+    })
+
 })
 
 module.exports = router;
