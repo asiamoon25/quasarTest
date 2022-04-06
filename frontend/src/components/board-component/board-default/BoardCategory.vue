@@ -7,9 +7,8 @@
           v-for="(category,i) in categories"
           :key=i
           class="text-dark"
-          :name=category._id
           :label=category.c_name
-          @click =listCategory(category.c_name)
+          @click =listCategory(category.router_path)
         />
       </q-tabs>
     </div>
@@ -29,18 +28,23 @@ export default defineComponent({
     const router = useRouter();
     const store = useStore();
     onBeforeMount(()=>{
-      store.dispatch('board/categoryAction',);
+      store.dispatch('board/categoryAction')
+        .then(()=> {
+
+        });
     });
     const categories = computed({
       set(val){
-        store.commit('board/categoryMutation',val);
+
       },
       get(){
         return store.getters['board/categoryGetter'];
       }
     });
-    const listCategory = function(payload) {
-      router.push('/board/'+payload);
+    const listCategory =  function(payload) {
+       router.push('/board/'+payload);
+
+      store.dispatch('board/countAction',payload);
     }
     return{
       state,

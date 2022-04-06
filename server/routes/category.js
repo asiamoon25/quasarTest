@@ -3,7 +3,7 @@ const Category = require('../controller/category');
 
 // /api/category-manage/
 router.post('/',(req,res)=>{
-    Category.createCategory(req.body)
+    Category.createCategory(req.body.params)
         .then(() =>{
             return res.status(200).json({returnCode:1 })
         }

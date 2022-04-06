@@ -1,25 +1,29 @@
 <template>
   <div class="q-pa-lg flex flex-center">
     <q-pagination
-      v-model="current"
       :max="result"
       input
+     :model-value="state.current"
     />
   </div>
 </template>
 <script>
 import {defineComponent, ref, reactive, onBeforeMount, computed} from "vue";
 import {useStore} from "vuex";
+import { useRouter, useRoute } from "vue-router";
+
 export default defineComponent({
   name : 'BoardPagination',
   setup () {
+    const route = useRoute();
+    const router = useRouter();
     const store = useStore();
     const state = reactive({
-
+        current: ref(1)
     });
 
     onBeforeMount(()=>{
-       const countResult = store.dispatch('board/countAction');
+
     });
 
     const result = computed({
@@ -27,12 +31,12 @@ export default defineComponent({
 
       },
       get() {
-        return store.getters['board/countGetter'];
+        return parseInt(store.getters['board/countGetter']);
       }
     })
     return {
       state,
-      current: ref(3),
+
       result
     }
   }

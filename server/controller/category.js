@@ -6,7 +6,7 @@ module.exports = {
     async createCategory (payload) {
 
         const category = new Category({
-            c_name : payload.name,
+            c_name : payload.c_name,
             router_path: payload.router_path
         });
         return await category.save();

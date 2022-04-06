@@ -7,7 +7,10 @@ export default [
         {
           path: '',
           component: ()=> import('../../pages/board-page/BoardPage'),
-
+        },
+        {
+          path:':category',
+          component: () => import('../../pages/board-page/BoardPage')
         }
       ]
     }

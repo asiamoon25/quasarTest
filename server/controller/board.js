@@ -10,9 +10,7 @@ module.exports={
         const board = new Board({
             title : payload.title,
             content : payload.content,
-            write_date: payload.write_date,
-            modify_date : payload.modify_date,
-            c_name: payload.c_name
+            c_router_path: payload.c_router_path
         });
 
         return await board.save();
@@ -28,11 +26,14 @@ module.exports={
     },
     async cateBoard(payload) {
 
-        return Board.findById(payload.categoryId);
+        return Board.find({c_router_path: payload});
 
     },
     async countBoard () {
         return Board.count();
+    },
+    async categoryPage(payload) {
+       return Board.find({c_router_path: payload}).count();
     }
 
 }

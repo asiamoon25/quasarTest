@@ -43,34 +43,37 @@
   </div>
 </template>
 <script>
-import { defineComponent,computed, onBeforeMount, reactive } from 'vue'
-import { useStore } from 'vuex'
+import {defineComponent, computed, onBeforeMount, reactive, watch, onMounted} from 'vue'
 import {useRoute, useRouter} from 'vue-router'
+import {useStore} from "vuex";
 
 export default defineComponent({
   name: 'BoardList',
   components:{
     // Comment
   },
-  props: {
-
-  },
-
-  setup(){
+setup(){
     const state = reactive({
       board: [],
       cursorStyle:{
         cursor: '',
       }
     })
-    const route = useRoute()
-    const router = useRouter()
-    const store = useStore()
-    onBeforeMount(()=>{
-      const category = route.params.category
-      store.dispatch('board/boardAction',category);
+  const store = useStore()
+  const route = useRoute()
+  const router = useRouter()
 
+  watch(() => route.name, async () => {
+    console.log(route.params.category)
+
+    // await store.dispatch('board/boardAction',category)
+  })
+    onBeforeMount(async ()=>{
+      const category = route.params.category
+
+      await store.dispatch('board/boardAction',category)
     })
+
     const mousePoint =  function mousePoint(){
       state.cursorStyle.cursor = "pointer"
     }
@@ -81,7 +84,7 @@ export default defineComponent({
 
     const boards = computed({
       set(val) { // 이건 안씀
-        store.commit('board/boardMutation',val);
+
       },
       get () {
         return store.getters['board/boardGetter']
@@ -92,7 +95,6 @@ export default defineComponent({
       boardDetail,
       state,
       boards
-
     }
   }
 })

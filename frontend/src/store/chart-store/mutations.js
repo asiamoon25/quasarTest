@@ -1,4 +1,4 @@
-import {cloneDeep} from "lodash";
+import _ from "lodash";
 
 export const chartOptionMutation = (state,opened) => {
   const options = {
@@ -17,7 +17,7 @@ export const chartOptionMutation = (state,opened) => {
     }
   }
 
-  state.options = cloneDeep(options)
+  state.options = _.cloneDeep(options)
 };
 export const chartSeriesMutation = (state,opened) => {
   const series = [
@@ -28,5 +28,5 @@ export const chartSeriesMutation = (state,opened) => {
     }
   ]
 
-  state.series =  cloneDeep(series)
+  state.series = _.cloneDeep(series)
 }

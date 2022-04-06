@@ -14,24 +14,36 @@ router.get('/',(req,res)=>{
         );
 })
 
-router.get('/create',(req,res)=>{
+router.post('/create',(req,res)=>{
     // Board.create(req.body).then(()=>{}).catch(err=>res.status(500).send(err));
-    Board.createBoard(req.query)
+    Board.createBoard(req.body.params)
         .then(()=>{
             return res.send('success');
         })
         .catch(err => res.status(500).send(err));
 })
 
-router.get('/get-category',(req,res)=>{
+router.get('/category',(req,res)=>{
 
-    Board.cateBoard(req.body.params.categoryId).
+    Board.cateBoard(req.query.category).
         then(boards=>{
             if(!boards) return res.status(204).send('no data')
             return res.status(200).json({board:boards})
     }).catch(err=>{
         res.status(500).send(err)
     });
+})
+
+router.get('/category-page',(req,res) => {
+
+    Board.categoryPage(req.query.category)
+        .then(result => {
+            if(!result) return res.status(204).send('no data')
+            return res.status(200).json({result: result})
+        }).catch(err=>{
+            console.log(err)
+    })
+
 })
 
 router.get('/count',(req,res) => {
